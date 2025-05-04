@@ -35,11 +35,12 @@ def predict_sentiment(text: str, return_label=True):
         return probs.tolist()
 
 def main():
-    df = pd.read_csv("collected_data.csv")
+    # df = pd.read_csv("collected_data.csv")
+    df = pd.read_csv("data_with_sentiment.csv")
 
     df["Sentiment"] = df["Review"].apply(lambda x: predict_sentiment(x, return_label=True))
 
-    output_file = "rubert_collected_data_with_sentiment.csv"
+    output_file = "rubert_second_data.csv"
     df.to_csv(output_file, index=False, encoding="utf-8")
     print(f"Сохранён файл: {output_file}")
 
